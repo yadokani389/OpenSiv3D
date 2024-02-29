@@ -1,4 +1,4 @@
-/*
+
 /////////////////
 //
 //	Example non-graphical program
@@ -15,8 +15,9 @@ void Main()
 }
 //
 /////////////////
-*/
 
+
+/*
 /////////////////
 //
 //	Example graphical program
@@ -118,3 +119,4 @@ void Main()
 }
 //
 /////////////////
+*/

@@ -27,8 +27,6 @@ add_executable(Siv3DTest
   #../../Test/Siv3DTest_Timer.cpp
   )
 
-set(Siv3D_DIR /tmp/OpenSiv3D/lib/cmake)
-
 find_package(Siv3D)
 target_link_libraries(Siv3DTest PUBLIC Siv3D::Siv3D)
 

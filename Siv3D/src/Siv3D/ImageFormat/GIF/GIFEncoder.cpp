@@ -20,6 +20,11 @@
 #	include <gif_lib.h>
 # endif
 
+# if GIFLIB_MAJOR > 5 || GIFLIB_MAJOR == 5 && GIFLIB_MINOR >= 2 || GIFLIB_MAJOR == 5 && GIFLIB_MINOR == 1 && GIFLIB_RELEASE >= 9
+//  see https://sourceforge.net/p/giflib/bugs/132/
+//  and https://sourceforge.net/p/giflib/bugs/142/
+# include <giflib/quantize.h>
+# else
 extern "C"
 {
 	// libgif/libutil
@@ -33,6 +38,7 @@ extern "C"
 		GifByteType* OutputBuffer,
 		GifColorType* OutputColorMap);
 }
+# endif
 
 namespace s3d
 {

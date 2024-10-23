@@ -4,26 +4,25 @@
 
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
   };
 
   outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-linux" ];
-      perSystem = { config, self', inputs', pkgs, system, ... }: {
+      perSystem = { pkgs, ... }: {
         packages.default = with pkgs;
-          stdenv.mkDerivation rec {
+          stdenv.mkDerivation {
             pname = "OpenSiv3D";
             version = "0.6.15";
 
             src = ./.;
 
-            nativeBuildInputs = [ cmake ninja ];
+            nativeBuildInputs = [ cmake ninja pkgconf ];
 
             buildInputs = [
-              pkgconf
               zlib
-              alsaLib
+              alsa-lib
               ffmpeg
               boost175
               giflib
@@ -51,7 +50,7 @@
               libsepol
               libdatrie
               libxkbcommon
-              epoxy
+              libepoxy
             ];
 
             cmakeFlags =
